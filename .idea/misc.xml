@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/azizkandias/AndroidStudioProjects/Ikasa/app/src/main/res/drawable/gradient_color.xml" value="0.298" />
+        <entry key="..\:/Users/azizkandias/AndroidStudioProjects/Ikasa/app/src/main/res/drawable/nav_menu.xml" value="0.298" />
+        <entry key="..\:/Users/azizkandias/AndroidStudioProjects/Ikasa/app/src/main/res/drawable/rounded_corner.xml" value="0.298" />
+        <entry key="..\:/Users/azizkandias/AndroidStudioProjects/Ikasa/app/src/main/res/layout/activity_form_ikan.xml" value="0.1671195652173913" />
+        <entry key="..\:/Users/azizkandias/AndroidStudioProjects/Ikasa/app/src/main/res/layout/activity_form_pesan.xml" value="0.14876723777684914" />
+        <entry key="..\:/Users/azizkandias/AndroidStudioProjects/Ikasa/app/src/main/res/layout/activity_home.xml" value="0.14" />
+        <entry key="..\:/Users/azizkandias/AndroidStudioProjects/Ikasa/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/azizkandias/AndroidStudioProjects/Ikasa/app/src/main/res/layout/activity_register.xml" value="0.25" />
+        <entry key="..\:/Users/azizkandias/AndroidStudioProjects/Ikasa/app/src/main/res/layout/activity_update_ikan.xml" value="0.1671195652173913" />
+        <entry key="..\:/Users/azizkandias/AndroidStudioProjects/Ikasa/app/src/main/res/layout/fragment_cart.xml" value="0.312280701754386" />
+        <entry key="..\:/Users/azizkandias/AndroidStudioProjects/Ikasa/app/src/main/res/layout/fragment_home.xml" value="0.19" />
+        <entry key="..\:/Users/azizkandias/AndroidStudioProjects/Ikasa/app/src/main/res/layout/fragment_pesanan.xml" value="0.22" />
+        <entry key="..\:/Users/azizkandias/AndroidStudioProjects/Ikasa/app/src/main/res/layout/fragment_profile.xml" value="0.11506140917905623" />
+        <entry key="..\:/Users/azizkandias/AndroidStudioProjects/Ikasa/app/src/main/res/layout/item_card.xml" value="0.312280701754386" />
+        <entry key="..\:/Users/azizkandias/AndroidStudioProjects/Ikasa/app/src/main/res/layout/item_cart.xml" value="0.22" />
+        <entry key="..\:/Users/azizkandias/AndroidStudioProjects/Ikasa/app/src/main/res/layout/item_checkout.xml" value="0.22" />
+        <entry key="..\:/Users/azizkandias/AndroidStudioProjects/Ikasa/app/src/main/res/layout/item_pesanan.xml" value="0.1671195652173913" />
+        <entry key="..\:/Users/azizkandias/AndroidStudioProjects/Ikasa/app/src/main/res/layout/item_rounded.xml" value="0.31140350877192985" />
+        <entry key="..\:/Users/azizkandias/AndroidStudioProjects/Ikasa/app/src/main/res/menu/nav_menu.xml" value="0.312280701754386" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
