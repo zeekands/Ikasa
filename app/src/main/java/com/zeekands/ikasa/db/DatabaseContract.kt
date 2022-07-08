@@ -45,4 +45,11 @@ internal class DatabaseContract {
             const val TOTAL = "total"
         }
     }
+    internal class LoginColumns : BaseColumns {
+        companion object {
+            const val TABLE_NAME = "login"
+            const val ID_USER = "idUser"
+            const val NAMA_USER = "namaUser"
+        }
+    }
 }

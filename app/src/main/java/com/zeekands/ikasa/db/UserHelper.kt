@@ -5,6 +5,8 @@ import android.content.Context
 import android.database.Cursor
 import android.database.SQLException
 import android.database.sqlite.SQLiteDatabase
+import com.zeekands.ikasa.db.DatabaseContract.UserColumns.Companion.EMAIL
+import com.zeekands.ikasa.db.DatabaseContract.UserColumns.Companion.PASSWORD
 import com.zeekands.ikasa.db.DatabaseContract.UserColumns.Companion._ID
 
 class UserHelper(context: Context) {
@@ -60,5 +62,17 @@ class UserHelper(context: Context) {
     }
     fun deleteById(id: String): Int {
         return database.delete(DATABASE_TABLE, "$_ID = '$id'", null)
+    }
+
+    fun login(email : String, password : String) : Cursor {
+        return database.query(
+            DATABASE_TABLE,
+            null,
+            "$EMAIL = ? AND $PASSWORD = ?",
+            arrayOf(email,password),
+            null,
+            null,
+            null
+        )
     }
 }

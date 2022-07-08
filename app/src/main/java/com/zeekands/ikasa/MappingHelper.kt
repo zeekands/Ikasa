@@ -1,10 +1,7 @@
 package com.zeekands.ikasa
 
 import android.database.Cursor
-import com.zeekands.ikasa.data.Cart
-import com.zeekands.ikasa.data.Ikan
-import com.zeekands.ikasa.data.Transaksi
-import com.zeekands.ikasa.data.User
+import com.zeekands.ikasa.data.*
 import com.zeekands.ikasa.db.DatabaseContract
 
 object MappingHelper {
@@ -35,7 +32,7 @@ object MappingHelper {
                 ikan = Ikan(id, nama, harga, stock, deskripsi)
             }
         }
-        return ikan!!
+        return ikan as Ikan
     }
 
     fun mapUserCursorToArrayList(userCursor: Cursor?): ArrayList<User> {
@@ -79,6 +76,18 @@ object MappingHelper {
                 val berat = getInt(getColumnIndexOrThrow(DatabaseContract.CartColumns.BERAT))
                 val total = getInt(getColumnIndexOrThrow(DatabaseContract.CartColumns.TOTAL))
                 cartList.add(Cart(id, idUser, idIkan, berat, total))
+            }
+        }
+        return cartList
+    }
+
+    fun mapLoginCursorToArrayList(cartCursor: Cursor?): ArrayList<Login> {
+        val cartList = ArrayList<Login>()
+        cartCursor?.apply {
+            while (moveToNext()) {
+                val idUser = getInt(getColumnIndexOrThrow(DatabaseContract.LoginColumns.ID_USER))
+                val namaUser = getString(getColumnIndexOrThrow(DatabaseContract.LoginColumns.NAMA_USER))
+                cartList.add(Login(idUser,namaUser))
             }
         }
         return cartList

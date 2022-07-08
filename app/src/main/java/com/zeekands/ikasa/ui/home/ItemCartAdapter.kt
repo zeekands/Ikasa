@@ -38,7 +38,7 @@ class ItemCartAdapter: RecyclerView.Adapter<ItemCartAdapter.ItemCartViewHolder>(
         fun bind(cart: Cart) {
             ikanHelper = IkanHelper.getInstance(itemView.context)
             ikanHelper.open()
-            val cursor = ikanHelper.queryById(cart.id.toString())
+            val cursor = ikanHelper.queryById(cart.id_ikan.toString())
             MappingHelper.mapIkanCursorToIkan(cursor).also {
                 binding.tvTitle.text = it.nama
             }

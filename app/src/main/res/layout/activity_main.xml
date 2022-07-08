@@ -68,6 +68,7 @@
             android:layout_height="match_parent"
             android:backgroundTint="@color/white"
             android:ems="10"
+            android:enabled="true"
             android:hint="@string/email"
             android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -92,6 +93,7 @@
             android:backgroundTint="@color/white"
             android:ems="10"
             android:hint="@string/password"
+            android:enabled="true"
             android:inputType="textPassword"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -7,6 +7,7 @@ import com.zeekands.ikasa.db.DatabaseContract.IkanColumns.Companion.TABLE_NAME
 import com.zeekands.ikasa.db.DatabaseContract.TransaksiColumns.Companion.TABLE_NAME as TABLE_TRANSAKSI
 import com.zeekands.ikasa.db.DatabaseContract.UserColumns.Companion.TABLE_NAME as TABLE_USER
 import com.zeekands.ikasa.db.DatabaseContract.CartColumns.Companion.TABLE_NAME as TABLE_CART
+import com.zeekands.ikasa.db.DatabaseContract.LoginColumns.Companion.TABLE_NAME as TABLE_LOGIN
 
 internal class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
@@ -38,6 +39,9 @@ internal class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATA
                 " ${DatabaseContract.CartColumns.ID_IKAN} INTEGER NOT NULL," +
                 " ${DatabaseContract.CartColumns.BERAT} INTEGER NOT NULL," +
                 " ${DatabaseContract.CartColumns.TOTAL} INTEGER NOT NULL);"
+        private const val SQL_CREATE_TABLE_LOGIN = "CREATE TABLE IF NOT EXISTS $TABLE_LOGIN" +
+                " (${DatabaseContract.LoginColumns.ID_USER} INTEGER PRIMARY KEY AUTOINCREMENT," +
+                " ${DatabaseContract.LoginColumns.NAMA_USER} TEXT NOT NULL);"
     }
 
     override fun onCreate(db: SQLiteDatabase) {
@@ -45,6 +49,7 @@ internal class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATA
         db.execSQL(SQL_CREATE_TABLE_USER)
         db.execSQL(SQL_CREATE_TABLE_TRANSAKSI)
         db.execSQL(SQL_CREATE_TABLE_CART)
+        db.execSQL(SQL_CREATE_TABLE_LOGIN)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
@@ -52,6 +57,7 @@ internal class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATA
         db.execSQL("DROP TABLE IF EXISTS $TABLE_USER")
         db.execSQL("DROP TABLE IF EXISTS $TABLE_TRANSAKSI")
         db.execSQL("DROP TABLE IF EXISTS $TABLE_CART")
+        db.execSQL("DROP TABLE IF EXISTS $TABLE_LOGIN")
         onCreate(db)
     }
 }
