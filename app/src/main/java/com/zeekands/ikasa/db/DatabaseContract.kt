@@ -12,6 +12,7 @@ internal class DatabaseContract {
             const val HARGA = "harga"
             const val STOCK = "stock"
             const val DESKRIPSI = "deskripsi"
+            const val GAMBAR = "gambar"
         }
     }
     internal class UserColumns : BaseColumns {

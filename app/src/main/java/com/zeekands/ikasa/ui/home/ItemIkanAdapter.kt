@@ -1,20 +1,26 @@
 package com.zeekands.ikasa.ui.home
 
+import android.content.ContentUris
+import android.content.Context
 import android.content.Intent
-import android.util.Log
+import android.database.Cursor
+import android.graphics.BitmapFactory
+import android.net.Uri
+import android.os.Environment
+import android.provider.DocumentsContract
+import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.zeekands.ikasa.MappingHelper
 import com.zeekands.ikasa.R
-import com.zeekands.ikasa.data.Cart
 import com.zeekands.ikasa.data.Ikan
 import com.zeekands.ikasa.databinding.ItemCartBinding
-import com.zeekands.ikasa.databinding.ItemCheckoutBinding
 import com.zeekands.ikasa.db.IkanHelper
 import com.zeekands.ikasa.ui.EditIkanActivity
-import com.zeekands.ikasa.ui.EditPesananActivity
+import com.zeekands.ikasa.utils.Utils
+import java.io.File
+
 
 class ItemIkanAdapter : RecyclerView.Adapter<ItemIkanAdapter.ItemCartViewHolder>() {
     private lateinit var ikanHelper: IkanHelper
@@ -49,6 +55,7 @@ class ItemIkanAdapter : RecyclerView.Adapter<ItemIkanAdapter.ItemCartViewHolder>
             binding.tvNama.text = ikan.nama
             binding.tvHarga.text = "Rp. ${ikan.harga.toString()} /kg"
             binding.tvStatus.text = "Stock ${ikan.stock}"
+            binding.ivItem.setImageBitmap(Utils.getImage(ikan.gambar))
 
             itemView.setOnClickListener {
                 val intent = Intent(itemView.context, EditIkanActivity::class.java)
@@ -73,4 +80,5 @@ class ItemIkanAdapter : RecyclerView.Adapter<ItemIkanAdapter.ItemCartViewHolder>
     }
 
     override fun getItemCount(): Int = this.ListIkan.size
+
 }

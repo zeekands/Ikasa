@@ -19,7 +19,8 @@ internal class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATA
                 " ${DatabaseContract.IkanColumns.NAMA} TEXT NOT NULL," +
                 " ${DatabaseContract.IkanColumns.HARGA} INTEGER NOT NULL," +
                 " ${DatabaseContract.IkanColumns.DESKRIPSI} TEXT NOT NULL," +
-                " ${DatabaseContract.IkanColumns.STOCK} INTEGER NOT NULL);"
+                " ${DatabaseContract.IkanColumns.STOCK} INTEGER NOT NULL," +
+                " ${DatabaseContract.IkanColumns.GAMBAR} BLOB NOT NULL);"
         private const val SQL_CREATE_TABLE_USER = "CREATE TABLE IF NOT EXISTS $TABLE_USER" +
                 " (${DatabaseContract.UserColumns._ID} INTEGER PRIMARY KEY AUTOINCREMENT," +
                 " ${DatabaseContract.UserColumns.NAMA} TEXT NOT NULL," +

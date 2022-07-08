@@ -10,4 +10,5 @@ data class Ikan(
     var harga: Int,
     var stock: Int,
     var deskripsi: String,
+    var gambar: ByteArray
 ): Parcelable

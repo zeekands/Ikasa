@@ -14,7 +14,8 @@ object MappingHelper {
                 val harga = getInt(getColumnIndexOrThrow(DatabaseContract.IkanColumns.HARGA))
                 val stock = getInt(getColumnIndexOrThrow(DatabaseContract.IkanColumns.STOCK))
                 val deskripsi = getString(getColumnIndexOrThrow(DatabaseContract.IkanColumns.DESKRIPSI))
-                ikanList.add(Ikan(id, nama, harga, stock, deskripsi))
+                val gambar = getBlob(getColumnIndexOrThrow(DatabaseContract.IkanColumns.GAMBAR))
+                ikanList.add(Ikan(id, nama, harga, stock, deskripsi, gambar))
             }
         }
         return ikanList
@@ -29,7 +30,8 @@ object MappingHelper {
                 val harga = getInt(getColumnIndexOrThrow(DatabaseContract.IkanColumns.HARGA))
                 val stock = getInt(getColumnIndexOrThrow(DatabaseContract.IkanColumns.STOCK))
                 val deskripsi = getString(getColumnIndexOrThrow(DatabaseContract.IkanColumns.DESKRIPSI))
-                ikan = Ikan(id, nama, harga, stock, deskripsi)
+                val gambar = getBlob(getColumnIndexOrThrow(DatabaseContract.IkanColumns.GAMBAR))
+                ikan = Ikan(id, nama, harga, stock, deskripsi, gambar)
             }
         }
         return ikan
