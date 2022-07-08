@@ -38,6 +38,21 @@ object MappingHelper {
         return ikan!!
     }
 
+    fun mapUserCursorToUser(userCursor: Cursor?): User? {
+        var user: User? = null
+        userCursor?.apply {
+            while (moveToNext()) {
+                val id = getInt(getColumnIndexOrThrow(DatabaseContract.UserColumns._ID))
+                val nama = getString(getColumnIndexOrThrow(DatabaseContract.UserColumns.NAMA))
+                val email = getString(getColumnIndexOrThrow(DatabaseContract.UserColumns.EMAIL))
+                val password = getString(getColumnIndexOrThrow(DatabaseContract.UserColumns.PASSWORD))
+                val role = getInt(getColumnIndexOrThrow(DatabaseContract.UserColumns.ROLE))
+                user = User(id, nama, email, password, role)
+            }
+        }
+        return user
+    }
+
     fun mapUserCursorToArrayList(userCursor: Cursor?): ArrayList<User> {
         val userList = ArrayList<User>()
         userCursor?.apply {

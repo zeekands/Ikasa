@@ -29,12 +29,31 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/material_et_price"
+        android:id="@+id/material_et_desc"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/material_et_title"
+        app:layout_constraintWidth_percent=".9">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_desc"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/white"
+            android:ems="10"
+            android:hint="@string/deskripsi"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/material_et_price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/material_et_desc"
         app:layout_constraintVertical_bias="0.38"
         app:layout_constraintWidth_percent=".9">
 
@@ -44,7 +63,7 @@
             android:layout_height="match_parent"
             android:backgroundTint="@color/white"
             android:ems="10"
-            android:hint="@string/hint_harga"
+            android:hint="@string/harga_per_kg"
             android:inputType="number" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -69,7 +88,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/btn_login"
+        android:id="@+id/btn_add"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/gradient_color"
@@ -80,4 +99,17 @@
         app:layout_constraintWidth_percent=".9"
         android:layout_marginTop="40dp"
         app:layout_constraintTop_toBottomOf="@+id/material_et_stock" />
+
+    <Button
+        android:id="@+id/btn_menu_update"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/gradient_color"
+        android:padding="5dp"
+        android:text="Update data ikan"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent=".9"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/btn_add" />
 </androidx.constraintlayout.widget.ConstraintLayout>
