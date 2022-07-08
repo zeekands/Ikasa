@@ -6,20 +6,30 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.zeekands.ikasa.MainActivity
+import com.zeekands.ikasa.MappingHelper
 import com.zeekands.ikasa.R
 import com.zeekands.ikasa.UpdateIkanActivity
 import com.zeekands.ikasa.data.Ikan
 import com.zeekands.ikasa.data.User
 import com.zeekands.ikasa.databinding.ActivityFormIkanBinding
 import com.zeekands.ikasa.databinding.ActivityRegisterBinding
+import com.zeekands.ikasa.db.CartHelper
 import com.zeekands.ikasa.db.DatabaseContract
 import com.zeekands.ikasa.db.IkanHelper
 import com.zeekands.ikasa.db.UserHelper
+import com.zeekands.ikasa.ui.home.ItemCartAdapter
+import com.zeekands.ikasa.ui.home.ItemIkanAdapter
 import com.zeekands.ikasa.ui.register.Register
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 
 class FormIkanActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityFormIkanBinding
+    private lateinit var itemIkanAdapter: ItemIkanAdapter
     private lateinit var ikanHelper: IkanHelper
     private var ikan: Ikan? = null
 
@@ -32,7 +42,29 @@ class FormIkanActivity : AppCompatActivity(), View.OnClickListener {
         ikanHelper.open()
 
         binding.btnAdd.setOnClickListener(this)
-        binding.btnMenuUpdate.setOnClickListener(this)
+        loadCartAsync()
+    }
+
+    private fun loadCartAsync() {
+        lifecycleScope.launch {
+//            binding.progressbar.visibility = View.VISIBLE
+            val deferredNotes = async(Dispatchers.IO) {
+                val cursor = ikanHelper.queryAll()
+                MappingHelper.mapIkanCursorToArrayList(cursor)
+            }
+//            binding.progressbar.visibility = View.INVISIBLE
+            val ikans = deferredNotes.await()
+            if (ikans.size > 0) {
+                itemIkanAdapter = ItemIkanAdapter()
+                itemIkanAdapter.ListIkan = ikans
+                binding.rv.apply {
+                    layoutManager = LinearLayoutManager(context)
+                    adapter = itemIkanAdapter
+                }
+            } else {
+                binding.tvNoData.visibility = View.VISIBLE
+            }
+        }
     }
 
     override fun onClick(view: View) {
@@ -78,8 +110,6 @@ class FormIkanActivity : AppCompatActivity(), View.OnClickListener {
             } else {
                 Toast.makeText(this, "Gagal membuat akun", Toast.LENGTH_SHORT).show()
             }
-        } else if (view.id == R.id.btn_menu_update) {
-            startActivity(Intent(this, UpdateIkanActivity::class.java))
         }
     }
 }
