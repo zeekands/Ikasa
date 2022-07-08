@@ -1,11 +1,13 @@
 package com.zeekands.ikasa
 
+import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.zeekands.ikasa.databinding.ActivityMainBinding
+import com.zeekands.ikasa.db.DatabaseContract
 import com.zeekands.ikasa.db.IkanHelper
 import com.zeekands.ikasa.db.LoginHelper
 import com.zeekands.ikasa.db.UserHelper
@@ -27,10 +29,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         userHelper = UserHelper.getInstance(this)
         loginHelper = LoginHelper.getInstance(this)
         userHelper.open()
+        loginHelper.open()
 
         binding.txtRegister.setOnClickListener {
             startActivity(Intent(this, Register::class.java))
         }
+        cekLogin()
 
         binding.btnLogin.setOnClickListener(this)
     }
@@ -42,10 +46,42 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 if (binding.etPassword.text.toString().trim() == it.password) {
                     when (it.role){
                         0 -> {
-                            startActivity(Intent(this, HomeActivity::class.java))
+                            val values = ContentValues()
+                            values.put(DatabaseContract.LoginColumns.ID_USER, it.id)
+                            values.put(DatabaseContract.LoginColumns.NAMA_USER, it.nama)
+                            values.put(DatabaseContract.LoginColumns.ROLE, it.role)
+                            val result = loginHelper.insert(values)
+                            if (result > 0) {
+                                userHelper.close()
+                                loginHelper.close()
+                                intent = Intent(this, HomeActivity::class.java)
+                                intent.addFlags(
+                                    Intent.FLAG_ACTIVITY_NEW_TASK or
+                                            Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                )
+                                startActivity(intent)
+                            } else {
+                                Toast.makeText(this, "Gagal login", Toast.LENGTH_SHORT).show()
+                            }
                         }
                         1 -> {
-                            startActivity(Intent(this, FormIkanActivity::class.java))
+                            val values = ContentValues()
+                            values.put(DatabaseContract.LoginColumns.ID_USER, it.id)
+                            values.put(DatabaseContract.LoginColumns.NAMA_USER, it.nama)
+                            values.put(DatabaseContract.LoginColumns.ROLE, it.role)
+                            val result = loginHelper.insert(values)
+                            if (result > 0) {
+                                userHelper.close()
+                                loginHelper.close()
+                                intent = Intent(this, FormIkanActivity::class.java)
+                                intent.addFlags(
+                                    Intent.FLAG_ACTIVITY_NEW_TASK or
+                                            Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                )
+                                startActivity(intent)
+                            } else {
+                                Toast.makeText(this, "Gagal login", Toast.LENGTH_SHORT).show()
+                            }
                         }
                     }
                 } else {
@@ -53,6 +89,29 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 }
             } else {
                 Toast.makeText(this, "Anda belum terdaftar", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun cekLogin(){
+        val cursor = loginHelper.queryAll()
+        MappingHelper.mapLoginCursorToArrayList(cursor).also {
+            if (it.size > 0) {
+                if (it[0].role == 0) {
+                    intent = Intent(this, HomeActivity::class.java)
+                    intent.addFlags(
+                        Intent.FLAG_ACTIVITY_NEW_TASK or
+                                Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    )
+                    startActivity(intent)
+                }else{
+                    intent = Intent(this, FormIkanActivity::class.java)
+                    intent.addFlags(
+                        Intent.FLAG_ACTIVITY_NEW_TASK or
+                                Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    )
+                    startActivity(intent)
+                }
             }
         }
     }

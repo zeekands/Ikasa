@@ -7,4 +7,5 @@ import kotlinx.parcelize.Parcelize
 data class Login(
     var id_user: Int,
     var nama: String,
+    var role: Int,
 ): Parcelable

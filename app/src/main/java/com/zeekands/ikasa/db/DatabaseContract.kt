@@ -50,6 +50,7 @@ internal class DatabaseContract {
             const val TABLE_NAME = "login"
             const val ID_USER = "idUser"
             const val NAMA_USER = "namaUser"
+            const val ROLE = "role"
         }
     }
 }

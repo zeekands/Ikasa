@@ -41,7 +41,9 @@ internal class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATA
                 " ${DatabaseContract.CartColumns.TOTAL} INTEGER NOT NULL);"
         private const val SQL_CREATE_TABLE_LOGIN = "CREATE TABLE IF NOT EXISTS $TABLE_LOGIN" +
                 " (${DatabaseContract.LoginColumns.ID_USER} INTEGER PRIMARY KEY AUTOINCREMENT," +
-                " ${DatabaseContract.LoginColumns.NAMA_USER} TEXT NOT NULL);"
+                " ${DatabaseContract.LoginColumns.NAMA_USER} TEXT NOT NULL," +
+        " ${DatabaseContract.LoginColumns.ROLE} INTEGER NOT NULL);"
+
         private const val SQL_CREATE_ADMIN = "INSERT INTO $TABLE_USER" +
                 " (${DatabaseContract.UserColumns.NAMA}, ${DatabaseContract.UserColumns.EMAIL}, ${DatabaseContract.UserColumns.ROLE}, ${DatabaseContract.UserColumns.PASSWORD})" +
                 " VALUES ('Admin', 'admin@gmail.com', 1,'admin');"

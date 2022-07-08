@@ -102,7 +102,8 @@ object MappingHelper {
             while (moveToNext()) {
                 val idUser = getInt(getColumnIndexOrThrow(DatabaseContract.LoginColumns.ID_USER))
                 val namaUser = getString(getColumnIndexOrThrow(DatabaseContract.LoginColumns.NAMA_USER))
-                cartList.add(Login(idUser,namaUser))
+                val role = getInt(getColumnIndexOrThrow(DatabaseContract.LoginColumns.ROLE))
+                cartList.add(Login(idUser,namaUser,role))
             }
         }
         return cartList
