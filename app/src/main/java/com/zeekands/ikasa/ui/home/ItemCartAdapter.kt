@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.zeekands.ikasa.MappingHelper
 import com.zeekands.ikasa.R
 import com.zeekands.ikasa.data.Cart
+import com.zeekands.ikasa.data.Ikan
 import com.zeekands.ikasa.databinding.ItemCheckoutBinding
 import com.zeekands.ikasa.db.IkanHelper
 
