@@ -14,6 +14,12 @@
         android:theme="@style/Theme.Ikasa"
         tools:targetApi="31">
         <activity
+            android:name=".ui.EditPesananActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.EditIkanActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.FormPesan.FormPesanActivity"
             android:exported="false" />
         <activity
@@ -24,11 +30,10 @@
             android:exported="false" />
         <activity
             android:name=".ui.home.HomeActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".ui.register.Register"
-            android:exported="false" > </activity>
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

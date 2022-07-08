@@ -58,7 +58,7 @@ class UserHelper(context: Context) {
         return database.query(
             DATABASE_TABLE,
             null,
-            "$EMAIL = ?, $PASSWORD = ?",
+            "$EMAIL = ? and $PASSWORD = ?",
             arrayOf(inputEmail,inputPassword),
             null,
             null,

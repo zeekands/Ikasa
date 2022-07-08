@@ -43,7 +43,7 @@ class ItemIkanAdapter : RecyclerView.Adapter<ItemIkanAdapter.ItemCartViewHolder>
         private val binding = ItemCartBinding.bind(itemView)
         fun bind(ikan: Ikan) {
             binding.tvNama.text = ikan.nama
-            binding.tvHarga.text = "Rp.${ikan.harga.toString()} /kg"
+            binding.tvHarga.text = "Rp. ${ikan.harga.toString()} /kg"
             binding.tvStatus.text = "Stock ${ikan.stock}"
         }
     }

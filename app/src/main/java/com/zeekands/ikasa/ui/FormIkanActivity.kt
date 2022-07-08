@@ -41,6 +41,8 @@ class FormIkanActivity : AppCompatActivity(), View.OnClickListener {
 
         ikanHelper = IkanHelper.getInstance(applicationContext)
         ikanHelper.open()
+        transaksiHelper = TransaksiHelper.getInstance(applicationContext)
+        transaksiHelper.open()
 
         binding.btnAdd.setOnClickListener(this)
         binding.btnSwitch.setOnClickListener(this)
@@ -84,20 +86,24 @@ class FormIkanActivity : AppCompatActivity(), View.OnClickListener {
             if (result > 0) {
                 ikan?.id = result.toInt()
                 setResult(Register.RESULT_ADD, intent)
-                ikanHelper.close()
                 Toast.makeText(this, "Berhasil menambah data ikan", Toast.LENGTH_SHORT).show()
+                loadIkanAsync()
 //                intent = Intent(this, MainActivity::class.java)
 //                startActivity(intent)
             } else {
                 Toast.makeText(this, "Gagal membuat akun", Toast.LENGTH_SHORT).show()
             }
         } else if (view.id == R.id.btn_switch) {
-            loadPesananAsync()
+            when (binding.btnSwitch.text){
+                "List Pesanan" -> loadPesananAsync()
+                "List Ikan" -> loadIkanAsync()
+            }
         }
     }
 
     private fun loadPesananAsync() {
         binding.btnSwitch.text = "List Ikan"
+        binding.tvListIkan.text = "List Pesanan"
         lifecycleScope.launch {
 //            binding.progressbar.visibility = View.VISIBLE
             val deferredNotes = async(Dispatchers.IO) {
@@ -115,6 +121,9 @@ class FormIkanActivity : AppCompatActivity(), View.OnClickListener {
                     adapter = itemPesananAdapter
                 }
             } else {
+                itemPesananAdapter = ItemPesananAdapter()
+                itemPesananAdapter.listTransaksi = transaksis
+                binding.rv.adapter = itemPesananAdapter
                 binding.tvNoData.visibility = View.VISIBLE
             }
         }
@@ -122,6 +131,7 @@ class FormIkanActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun loadIkanAsync() {
         binding.btnSwitch.text = "List Pesanan"
+        binding.tvListIkan.text = "List Ikan"
         lifecycleScope.launch {
 //            binding.progressbar.visibility = View.VISIBLE
             val deferredNotes = async(Dispatchers.IO) {
@@ -139,6 +149,9 @@ class FormIkanActivity : AppCompatActivity(), View.OnClickListener {
                     adapter = itemIkanAdapter
                 }
             } else {
+                itemIkanAdapter = ItemIkanAdapter()
+                itemIkanAdapter.ListIkan = ikans
+                binding.rv.adapter = itemIkanAdapter
                 binding.tvNoData.visibility = View.VISIBLE
             }
         }
