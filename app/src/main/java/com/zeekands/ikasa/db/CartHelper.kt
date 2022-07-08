@@ -5,6 +5,7 @@ import android.content.Context
 import android.database.Cursor
 import android.database.SQLException
 import android.database.sqlite.SQLiteDatabase
+import com.zeekands.ikasa.data.User
 
 class CartHelper(context: Context) {
     private var dataBaseHelper: DatabaseHelper = DatabaseHelper(context)
@@ -43,7 +44,7 @@ class CartHelper(context: Context) {
         return database.query(
             DATABASE_TABLE,
             null,
-            "${DatabaseContract.CartColumns._ID} = ?",
+            "${DatabaseContract.CartColumns.ID_USER} = ?",
             arrayOf(id),
             null,
             null,
@@ -58,5 +59,8 @@ class CartHelper(context: Context) {
     }
     fun deleteById(id: String): Int {
         return database.delete(DATABASE_TABLE, "${DatabaseContract.CartColumns._ID} = '$id'", null)
+    }
+    fun delete(idUser: String): Int {
+        return database.delete(DATABASE_TABLE, "${DatabaseContract.CartColumns.ID_USER} = '$idUser'", null)
     }
 }

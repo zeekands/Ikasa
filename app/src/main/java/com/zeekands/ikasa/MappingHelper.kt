@@ -96,16 +96,31 @@ object MappingHelper {
         return cartList
     }
 
-    fun mapLoginCursorToArrayList(cartCursor: Cursor?): ArrayList<Login> {
-        val cartList = ArrayList<Login>()
-        cartCursor?.apply {
+    fun mapLoginCursorToArrayList(loginCursor: Cursor?): ArrayList<Login> {
+        val loginList = ArrayList<Login>()
+        loginCursor?.apply {
             while (moveToNext()) {
                 val idUser = getInt(getColumnIndexOrThrow(DatabaseContract.LoginColumns.ID_USER))
                 val namaUser = getString(getColumnIndexOrThrow(DatabaseContract.LoginColumns.NAMA_USER))
                 val role = getInt(getColumnIndexOrThrow(DatabaseContract.LoginColumns.ROLE))
-                cartList.add(Login(idUser,namaUser,role))
+                loginList.add(Login(idUser,namaUser,role))
             }
         }
-        return cartList
+        return loginList
+    }
+
+    fun mapCartCursortoCart(cartCursor: Cursor?): Cart? {
+        var cart: Cart? = null
+        cartCursor?.apply {
+            while (moveToNext()) {
+                val id = getInt(getColumnIndexOrThrow(DatabaseContract.CartColumns._ID))
+                val idIkan = getInt(getColumnIndexOrThrow(DatabaseContract.CartColumns.ID_IKAN))
+                val idUser = getInt(getColumnIndexOrThrow(DatabaseContract.CartColumns.ID_USER))
+                val berat = getInt(getColumnIndexOrThrow(DatabaseContract.CartColumns.BERAT))
+                val total = getInt(getColumnIndexOrThrow(DatabaseContract.CartColumns.TOTAL))
+                cart = Cart(id, idUser, idIkan, berat, total)
+            }
+        }
+        return cart
     }
 }

@@ -32,6 +32,7 @@ class FormIkanActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var itemPesananAdapter: ItemPesananAdapter
     private lateinit var ikanHelper: IkanHelper
     private lateinit var transaksiHelper: TransaksiHelper
+    private lateinit var loginHelper: LoginHelper
     private var ikan: Ikan? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,6 +44,9 @@ class FormIkanActivity : AppCompatActivity(), View.OnClickListener {
         ikanHelper.open()
         transaksiHelper = TransaksiHelper.getInstance(applicationContext)
         transaksiHelper.open()
+        loginHelper = LoginHelper.getInstance(applicationContext)
+        loginHelper.open()
+
 
         binding.btnAdd.setOnClickListener(this)
         binding.btnSwitch.setOnClickListener(this)
@@ -93,11 +97,15 @@ class FormIkanActivity : AppCompatActivity(), View.OnClickListener {
             } else {
                 Toast.makeText(this, "Gagal membuat data ikan", Toast.LENGTH_SHORT).show()
             }
-        } else if (view.id == R.id.btn_switch) {
+        }
+        else if (view.id == R.id.btn_switch) {
             when (binding.btnSwitch.text){
                 "List Pesanan" -> loadPesananAsync()
                 "List Ikan" -> loadIkanAsync()
             }
+        }
+        else if (view.id == R.id.btn_logout) {
+           logout()
         }
     }
 
@@ -155,5 +163,16 @@ class FormIkanActivity : AppCompatActivity(), View.OnClickListener {
                 binding.tvNoData.visibility = View.VISIBLE
             }
         }
+    }
+
+    fun logout(){
+        loginHelper.open()
+        loginHelper.delete()
+        val intent = Intent(applicationContext, MainActivity::class.java)
+        intent.addFlags(
+            Intent.FLAG_ACTIVITY_NEW_TASK or
+                    Intent.FLAG_ACTIVITY_CLEAR_TASK
+        )
+        startActivity(intent)
     }
 }

@@ -7,12 +7,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.zeekands.ikasa.MappingHelper
 import com.zeekands.ikasa.R
 import com.zeekands.ikasa.data.Cart
-import com.zeekands.ikasa.data.Ikan
 import com.zeekands.ikasa.databinding.ItemCheckoutBinding
-import com.zeekands.ikasa.db.IkanHelper
+import com.zeekands.ikasa.db.CartHelper
 
 class ItemCartAdapter: RecyclerView.Adapter<ItemCartAdapter.ItemCartViewHolder>() {
-    private lateinit var ikanHelper: IkanHelper
+    private lateinit var cartHelper: CartHelper
     var ListCart = ArrayList<Cart>()
         set(ListCart) {
             if (ListCart.size > 0) {
@@ -34,16 +33,23 @@ class ItemCartAdapter: RecyclerView.Adapter<ItemCartAdapter.ItemCartViewHolder>(
         notifyItemRangeChanged(position, this.ListCart.size)
     }
 
+    fun removeAll() {
+        this.ListCart.clear()
+        notifyDataSetChanged()
+    }
+
     inner class ItemCartViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding = ItemCheckoutBinding.bind(itemView)
         fun bind(cart: Cart) {
-            ikanHelper = IkanHelper.getInstance(itemView.context)
-            ikanHelper.open()
-            val cursor = ikanHelper.queryById(cart.id_ikan.toString())
-            MappingHelper.mapIkanCursorToIkan(cursor)?.also {
-                binding.tvTitle.text = it.nama
+            cartHelper = CartHelper.getInstance(itemView.context)
+            cartHelper.open()
+            binding.tvHarga.text = "Rp.${cart.total} (${cart.jumlah} Kg)"
+            binding.btnDelete.setOnClickListener {
+                val result = cartHelper.deleteById(cart.id.toString())
+                if (result > 0) {
+                    removeItem(adapterPosition)
+                }
             }
-            binding.tvHarga.text = "Rp.${cart.total.toString()} (${cart.total} Kg)"
         }
     }
 
