@@ -1,6 +1,7 @@
 package com.zeekands.ikasa.ui.home
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -45,7 +46,7 @@ class ItemPesananAdapter: RecyclerView.Adapter<ItemPesananAdapter.ItemPesananVie
             ikanHelper = IkanHelper.getInstance(itemView.context)
             ikanHelper.open()
             val cursor = ikanHelper.queryById(transaksi.idIkan.toString())
-            MappingHelper.mapIkanCursorToIkan(cursor).also {
+            MappingHelper.mapIkanCursorToIkan(cursor)?.also {
                 binding.tvTitle.text = it.nama
             }
             binding.tvHarga.text = "Rp.${transaksi.total} (${transaksi.berat} Kg)"

@@ -20,7 +20,7 @@ object MappingHelper {
         return ikanList
     }
 
-    fun mapIkanCursorToIkan(ikanCursor: Cursor?): Ikan {
+    fun mapIkanCursorToIkan(ikanCursor: Cursor?): Ikan? {
         var ikan: Ikan? = null
         ikanCursor?.apply {
             while (moveToNext()) {
@@ -32,7 +32,7 @@ object MappingHelper {
                 ikan = Ikan(id, nama, harga, stock, deskripsi)
             }
         }
-        return ikan as Ikan
+        return ikan
     }
 
     fun mapUserCursorToUser(userCursor: Cursor?): User? {

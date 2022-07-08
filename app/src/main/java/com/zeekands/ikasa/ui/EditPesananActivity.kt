@@ -23,8 +23,8 @@ class EditPesananActivity : AppCompatActivity() {
 
     companion object {
         const val ID = "id"
-        const val ID_USER = "id"
-        const val ID_IKAN = "id"
+        const val ID_USER = "idUser"
+        const val ID_IKAN = "idIkan"
         const val BERAT = "berat"
         const val TOTAL = "total"
         const val STATUS = "status"
@@ -34,24 +34,31 @@ class EditPesananActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityEditPesananBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        Log.d("id ikan 1", intent.getIntExtra(ID_IKAN, 0).toString())
 
         ikanHelper = IkanHelper.getInstance(this)
         ikanHelper.open()
+        Log.d("id ikan 2", intent.getIntExtra(ID_IKAN, 0).toString())
         var cursor = ikanHelper.queryById(intent.getIntExtra(ID_IKAN, 0).toString())
-        MappingHelper.mapIkanCursorToIkan(cursor).also {
+        MappingHelper.mapIkanCursorToIkan(cursor)?.also {
+            Log.d("nama ikan", it.nama)
             binding.tvIkan.text = it.nama
         }
+
         userHelper = UserHelper.getInstance(this)
         userHelper.open()
         cursor = userHelper.queryById(intent.getIntExtra(ID_USER, 0).toString())
         MappingHelper.mapUserCursorToUser(cursor)?.also {
+            Log.d("nama ikan", it.nama)
             binding.tvNama.text = it.nama
         }
+
         transaksiHelper = TransaksiHelper.getInstance(this)
         transaksiHelper.open()
 
         binding.tvBerat.setText(intent.getIntExtra(BERAT, 0).toString())
-        binding.tvTotal.setText(intent.getStringExtra(STATUS).toString())
+        binding.tvTotal.setText(intent.getIntExtra(TOTAL, 0).toString())
+        binding.etStatus.setText(intent.getStringExtra(STATUS).toString())
 
         binding.btnAdd.setOnClickListener {
             val status = binding.etStatus.text.toString().trim()
