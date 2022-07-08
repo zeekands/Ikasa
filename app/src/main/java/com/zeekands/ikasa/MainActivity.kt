@@ -13,6 +13,9 @@ import com.zeekands.ikasa.db.LoginHelper
 import com.zeekands.ikasa.db.UserHelper
 import com.zeekands.ikasa.ui.FormIkanActivity
 import com.zeekands.ikasa.ui.home.HomeActivity
+import com.zeekands.ikasa.ui.home.PesananProsesFragment
+import com.zeekands.ikasa.ui.home.PesananSelesaiFragment
+import com.zeekands.ikasa.ui.home.PesananSemuaFragment
 import com.zeekands.ikasa.ui.register.Register
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
@@ -54,6 +57,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                             if (result > 0) {
                                 userHelper.close()
                                 loginHelper.close()
+
+                                PesananSelesaiFragment.ID_USER = it.id.toString()
+                                PesananSemuaFragment.ID_USER = it.id.toString()
+                                PesananProsesFragment.ID_USER = it.id.toString()
+
                                 intent = Intent(this, HomeActivity::class.java)
                                 intent.addFlags(
                                     Intent.FLAG_ACTIVITY_NEW_TASK or

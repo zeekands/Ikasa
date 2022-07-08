@@ -33,4 +33,7 @@
     <string name="deskripsi">Deskripsi</string>
     <string name="harga_per_kg">Harga per kg</string>
     <string name="list_pesanan">List Pesanan</string>
+    <string name="semua">Semua</string>
+    <string name="proses">Proses</string>
+    <string name="selesa">Selesai</string>
 </resources>

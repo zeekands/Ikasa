@@ -39,6 +39,28 @@ class TransaksiHelper(context: Context) {
             null,
             "${DatabaseContract.TransaksiColumns._ID} ASC")
     }
+    fun queryAllByUser(id: String): Cursor {
+        return database.query(
+            DATABASE_TABLE,
+            null,
+            "${DatabaseContract.TransaksiColumns.ID_USER} = ?",
+            arrayOf(id),
+            null,
+            null,
+            null,
+            null)
+    }
+    fun queryByStatus(status: String, id: String): Cursor {
+        return database.query(
+            DATABASE_TABLE,
+            null,
+            "${DatabaseContract.TransaksiColumns.STATUS} = ? AND ${DatabaseContract.TransaksiColumns.ID_USER} = ?",
+            arrayOf(status, id),
+            null,
+            null,
+            null,
+            null)
+    }
     fun queryById(id: String): Cursor {
         return database.query(
             DATABASE_TABLE,
