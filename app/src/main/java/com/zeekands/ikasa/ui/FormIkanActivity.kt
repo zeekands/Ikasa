@@ -16,12 +16,11 @@ import com.zeekands.ikasa.data.Ikan
 import com.zeekands.ikasa.data.User
 import com.zeekands.ikasa.databinding.ActivityFormIkanBinding
 import com.zeekands.ikasa.databinding.ActivityRegisterBinding
-import com.zeekands.ikasa.db.CartHelper
+import com.zeekands.ikasa.db.*
 import com.zeekands.ikasa.db.DatabaseContract
-import com.zeekands.ikasa.db.IkanHelper
-import com.zeekands.ikasa.db.UserHelper
 import com.zeekands.ikasa.ui.home.ItemCartAdapter
 import com.zeekands.ikasa.ui.home.ItemIkanAdapter
+import com.zeekands.ikasa.ui.home.ItemPesananAdapter
 import com.zeekands.ikasa.ui.register.Register
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -30,7 +29,9 @@ import kotlinx.coroutines.launch
 class FormIkanActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityFormIkanBinding
     private lateinit var itemIkanAdapter: ItemIkanAdapter
+    private lateinit var itemPesananAdapter: ItemPesananAdapter
     private lateinit var ikanHelper: IkanHelper
+    private lateinit var transaksiHelper: TransaksiHelper
     private var ikan: Ikan? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,29 +43,9 @@ class FormIkanActivity : AppCompatActivity(), View.OnClickListener {
         ikanHelper.open()
 
         binding.btnAdd.setOnClickListener(this)
-        loadCartAsync()
-    }
-
-    private fun loadCartAsync() {
-        lifecycleScope.launch {
-//            binding.progressbar.visibility = View.VISIBLE
-            val deferredNotes = async(Dispatchers.IO) {
-                val cursor = ikanHelper.queryAll()
-                MappingHelper.mapIkanCursorToArrayList(cursor)
-            }
-//            binding.progressbar.visibility = View.INVISIBLE
-            val ikans = deferredNotes.await()
-            if (ikans.size > 0) {
-                itemIkanAdapter = ItemIkanAdapter()
-                itemIkanAdapter.ListIkan = ikans
-                binding.rv.apply {
-                    layoutManager = LinearLayoutManager(context)
-                    adapter = itemIkanAdapter
-                }
-            } else {
-                binding.tvNoData.visibility = View.VISIBLE
-            }
-        }
+        binding.btnSwitch.setOnClickListener(this)
+        binding.btnLogout.setOnClickListener(this)
+        loadIkanAsync()
     }
 
     override fun onClick(view: View) {
@@ -109,6 +90,56 @@ class FormIkanActivity : AppCompatActivity(), View.OnClickListener {
 //                startActivity(intent)
             } else {
                 Toast.makeText(this, "Gagal membuat akun", Toast.LENGTH_SHORT).show()
+            }
+        } else if (view.id == R.id.btn_switch) {
+            loadPesananAsync()
+        }
+    }
+
+    private fun loadPesananAsync() {
+        binding.btnSwitch.text = "List Ikan"
+        lifecycleScope.launch {
+//            binding.progressbar.visibility = View.VISIBLE
+            val deferredNotes = async(Dispatchers.IO) {
+                val cursor = transaksiHelper.queryAll()
+                MappingHelper.mapTransaksiCursorToArrayList(cursor)
+            }
+//            binding.progressbar.visibility = View.INVISIBLE
+            val transaksis = deferredNotes.await()
+            if (transaksis.size > 0) {
+                binding.tvNoData.visibility = View.INVISIBLE
+                itemPesananAdapter = ItemPesananAdapter()
+                itemPesananAdapter.listTransaksi = transaksis
+                binding.rv.apply {
+                    layoutManager = LinearLayoutManager(context)
+                    adapter = itemPesananAdapter
+                }
+            } else {
+                binding.tvNoData.visibility = View.VISIBLE
+            }
+        }
+    }
+
+    private fun loadIkanAsync() {
+        binding.btnSwitch.text = "List Pesanan"
+        lifecycleScope.launch {
+//            binding.progressbar.visibility = View.VISIBLE
+            val deferredNotes = async(Dispatchers.IO) {
+                val cursor = ikanHelper.queryAll()
+                MappingHelper.mapIkanCursorToArrayList(cursor)
+            }
+//            binding.progressbar.visibility = View.INVISIBLE
+            val ikans = deferredNotes.await()
+            if (ikans.size > 0) {
+                binding.tvNoData.visibility = View.INVISIBLE
+                itemIkanAdapter = ItemIkanAdapter()
+                itemIkanAdapter.ListIkan = ikans
+                binding.rv.apply {
+                    layoutManager = LinearLayoutManager(context)
+                    adapter = itemIkanAdapter
+                }
+            } else {
+                binding.tvNoData.visibility = View.VISIBLE
             }
         }
     }
