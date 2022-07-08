@@ -65,14 +65,7 @@
             android:hint="@string/harga_per_kg"
             android:inputType="number" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_stock"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:backgroundTint="@color/white"
-            android:ems="10"
-            android:hint="@string/stock"
-            android:inputType="number" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -84,7 +77,14 @@
         app:layout_constraintTop_toBottomOf="@id/material_et_price"
         app:layout_constraintVertical_bias="0.38"
         app:layout_constraintWidth_percent=".9">
-
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_stock"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/white"
+            android:ems="10"
+            android:hint="@string/stock"
+            android:inputType="number" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button

@@ -8,7 +8,6 @@ import android.database.sqlite.SQLiteDatabase
 import com.zeekands.ikasa.db.DatabaseContract.UserColumns.Companion.EMAIL
 import com.zeekands.ikasa.db.DatabaseContract.UserColumns.Companion.PASSWORD
 import com.zeekands.ikasa.db.DatabaseContract.UserColumns.Companion._ID
-import com.zeekands.ikasa.db.DatabaseContract.UserColumns.Companion.EMAIL
 
 class UserHelper(context: Context) {
 
@@ -55,12 +54,12 @@ class UserHelper(context: Context) {
             null,
             null)
     }
-    fun queryByEmail(inputemail: String): Cursor {
+    fun queryLogin(inputEmail: String, inputPassword : String): Cursor {
         return database.query(
             DATABASE_TABLE,
             null,
-            "$EMAIL = ?",
-            arrayOf(inputemail),
+            "$EMAIL = ?, $PASSWORD = ?",
+            arrayOf(inputEmail,inputPassword),
             null,
             null,
             null,

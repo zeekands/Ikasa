@@ -42,6 +42,9 @@ internal class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATA
         private const val SQL_CREATE_TABLE_LOGIN = "CREATE TABLE IF NOT EXISTS $TABLE_LOGIN" +
                 " (${DatabaseContract.LoginColumns.ID_USER} INTEGER PRIMARY KEY AUTOINCREMENT," +
                 " ${DatabaseContract.LoginColumns.NAMA_USER} TEXT NOT NULL);"
+        private const val SQL_CREATE_ADMIN = "INSERT INTO $TABLE_USER" +
+                " (${DatabaseContract.UserColumns.NAMA}, ${DatabaseContract.UserColumns.EMAIL}, ${DatabaseContract.UserColumns.ROLE}, ${DatabaseContract.UserColumns.PASSWORD})" +
+                " VALUES ('Admin', 'admin@gmail.com', 1,'admin');"
     }
 
     override fun onCreate(db: SQLiteDatabase) {
@@ -50,6 +53,7 @@ internal class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATA
         db.execSQL(SQL_CREATE_TABLE_TRANSAKSI)
         db.execSQL(SQL_CREATE_TABLE_CART)
         db.execSQL(SQL_CREATE_TABLE_LOGIN)
+        db.execSQL(SQL_CREATE_ADMIN)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {

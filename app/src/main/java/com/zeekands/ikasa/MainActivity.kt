@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.zeekands.ikasa.databinding.ActivityMainBinding
 import com.zeekands.ikasa.db.IkanHelper
+import com.zeekands.ikasa.db.LoginHelper
 import com.zeekands.ikasa.db.UserHelper
 import com.zeekands.ikasa.ui.FormIkanActivity
 import com.zeekands.ikasa.ui.home.HomeActivity
@@ -15,6 +16,7 @@ import com.zeekands.ikasa.ui.register.Register
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityMainBinding
     private lateinit var userHelper: UserHelper
+    private lateinit var loginHelper: LoginHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +25,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(binding.root)
 
         userHelper = UserHelper.getInstance(this)
+        loginHelper = LoginHelper.getInstance(this)
         userHelper.open()
 
         binding.txtRegister.setOnClickListener {
@@ -33,7 +36,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(p0: View?) {
-        val cursor = userHelper.queryByEmail(binding.etEmail.text.toString().trim())
+        val cursor = userHelper.queryLogin(binding.etEmail.text.toString().trim(), binding.etPassword.text.toString().trim())
         MappingHelper.mapUserCursorToUser(cursor).also {
             if (it != null) {
                 if (binding.etPassword.text.toString().trim() == it.password) {
