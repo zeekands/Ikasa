@@ -1,5 +1,6 @@
 package com.zeekands.ikasa.ui.home
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ import com.zeekands.ikasa.databinding.ItemPesananBinding
 import com.zeekands.ikasa.databinding.ItemRoundedBinding
 import com.zeekands.ikasa.db.IkanHelper
 import com.zeekands.ikasa.db.UserHelper
+import com.zeekands.ikasa.ui.EditPesananActivity
 
 class ItemPesananAdapter: RecyclerView.Adapter<ItemPesananAdapter.ItemPesananViewHolder>() {
     private lateinit var ikanHelper: IkanHelper
@@ -46,8 +48,19 @@ class ItemPesananAdapter: RecyclerView.Adapter<ItemPesananAdapter.ItemPesananVie
             MappingHelper.mapIkanCursorToIkan(cursor).also {
                 binding.tvTitle.text = it.nama
             }
-            binding.tvHarga.text = "Rp.${transaksi.total.toString()} (${transaksi.berat} Kg)"
+            binding.tvHarga.text = "Rp.${transaksi.total} (${transaksi.berat} Kg)"
             binding.tvStatus.text = transaksi.status
+
+            itemView.setOnClickListener {
+                val intent = Intent(itemView.context, EditPesananActivity::class.java)
+                intent.putExtra(EditPesananActivity.ID, transaksi.id)
+                intent.putExtra(EditPesananActivity.ID_IKAN, transaksi.idIkan)
+                intent.putExtra(EditPesananActivity.ID_USER, transaksi.idUser)
+                intent.putExtra(EditPesananActivity.BERAT, transaksi.berat)
+                intent.putExtra(EditPesananActivity.TOTAL, transaksi.total)
+                intent.putExtra(EditPesananActivity.STATUS, transaksi.status)
+                itemView.context.startActivity(intent)
+            }
         }
     }
 

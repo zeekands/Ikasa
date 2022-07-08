@@ -91,7 +91,7 @@ class FormIkanActivity : AppCompatActivity(), View.OnClickListener {
 //                intent = Intent(this, MainActivity::class.java)
 //                startActivity(intent)
             } else {
-                Toast.makeText(this, "Gagal membuat akun", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Gagal membuat data ikan", Toast.LENGTH_SHORT).show()
             }
         } else if (view.id == R.id.btn_switch) {
             when (binding.btnSwitch.text){

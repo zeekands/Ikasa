@@ -1,5 +1,7 @@
 package com.zeekands.ikasa.ui.home
 
+import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +13,8 @@ import com.zeekands.ikasa.data.Ikan
 import com.zeekands.ikasa.databinding.ItemCartBinding
 import com.zeekands.ikasa.databinding.ItemCheckoutBinding
 import com.zeekands.ikasa.db.IkanHelper
+import com.zeekands.ikasa.ui.EditIkanActivity
+import com.zeekands.ikasa.ui.EditPesananActivity
 
 class ItemIkanAdapter : RecyclerView.Adapter<ItemIkanAdapter.ItemCartViewHolder>() {
     private lateinit var ikanHelper: IkanHelper
@@ -45,6 +49,16 @@ class ItemIkanAdapter : RecyclerView.Adapter<ItemIkanAdapter.ItemCartViewHolder>
             binding.tvNama.text = ikan.nama
             binding.tvHarga.text = "Rp. ${ikan.harga.toString()} /kg"
             binding.tvStatus.text = "Stock ${ikan.stock}"
+
+            itemView.setOnClickListener {
+                val intent = Intent(itemView.context, EditIkanActivity::class.java)
+                intent.putExtra(EditIkanActivity.ID, ikan.id)
+                intent.putExtra(EditIkanActivity.NAMA, ikan.nama)
+                intent.putExtra(EditIkanActivity.DESC, ikan.deskripsi)
+                intent.putExtra(EditIkanActivity.HARGA, ikan.harga)
+                intent.putExtra(EditIkanActivity.STOK, ikan.stock)
+                itemView.context.startActivity(intent)
+            }
         }
     }
 
