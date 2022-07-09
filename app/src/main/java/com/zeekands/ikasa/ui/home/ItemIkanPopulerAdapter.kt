@@ -9,6 +9,7 @@ import com.zeekands.ikasa.R
 import com.zeekands.ikasa.data.Ikan
 import com.zeekands.ikasa.databinding.ItemCardBinding
 import com.zeekands.ikasa.ui.FormPesan.FormPesanActivity
+import com.zeekands.ikasa.utils.Utils
 
 class ItemIkanPopulerAdapter: RecyclerView.Adapter<ItemIkanPopulerAdapter.ItemIkanPopulerViewHolder>() {
     var listIkan = ArrayList<Ikan>()
@@ -36,6 +37,7 @@ class ItemIkanPopulerAdapter: RecyclerView.Adapter<ItemIkanPopulerAdapter.ItemIk
         fun bind(ikan: Ikan) {
             binding.tvTitle.text = ikan.nama
             binding.tvHarga.text = "Rp. ${ikan.harga}/kg"
+            binding.ivBanner.setImageBitmap(Utils.getImage(ikan.gambar))
             binding.imageButton2.setOnClickListener {
                 val intent = Intent(itemView.context, FormPesanActivity::class.java)
                 intent.putExtra("ikan", ikan)

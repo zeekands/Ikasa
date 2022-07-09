@@ -83,6 +83,21 @@ object MappingHelper {
         return transaksiList
     }
 
+    fun mapTransaksiJoinCursorToArrayList(cursor: Cursor) : ArrayList<TransaksiJoin> {
+        val transaksiList = ArrayList<TransaksiJoin>()
+        cursor.apply {
+            val id = getInt(getColumnIndexOrThrow(DatabaseContract.TransaksiColumns._ID))
+            val idIkan = getInt(getColumnIndexOrThrow(DatabaseContract.TransaksiColumns.ID_IKAN))
+            val idUser = getInt(getColumnIndexOrThrow(DatabaseContract.TransaksiColumns.ID_USER))
+            val berat = getInt(getColumnIndexOrThrow(DatabaseContract.TransaksiColumns.BERAT))
+            val status = getString(getColumnIndexOrThrow(DatabaseContract.TransaksiColumns.STATUS))
+            val total = getInt(getColumnIndexOrThrow(DatabaseContract.TransaksiColumns.TOTAL))
+            val gambar = getBlob(getColumnIndexOrThrow(DatabaseContract.IkanColumns.GAMBAR))
+            transaksiList.add(TransaksiJoin(id, idUser, idIkan, berat, total, status,gambar))
+        }
+        return transaksiList
+    }
+
     fun mapCartCursorToArrayList(cartCursor: Cursor?): ArrayList<Cart> {
         val cartList = ArrayList<Cart>()
         cartCursor?.apply {

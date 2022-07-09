@@ -12,3 +12,14 @@ data class Transaksi(
     var total: Int,
     var status: String,
 ): Parcelable
+
+@Parcelize
+data class TransaksiJoin(
+    var id: Int,
+    var idUser: Int,
+    var idIkan: Int,
+    var berat: Int,
+    var total: Int,
+    var status: String,
+    var gambar: ByteArray
+) : Parcelable

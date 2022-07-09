@@ -28,6 +28,7 @@ class EditPesananActivity : AppCompatActivity() {
         const val BERAT = "berat"
         const val TOTAL = "total"
         const val STATUS = "status"
+        const val GAMBAR = "gambar"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,7 +60,6 @@ class EditPesananActivity : AppCompatActivity() {
         binding.tvBerat.setText(intent.getIntExtra(BERAT, 0).toString())
         binding.tvTotal.setText(intent.getIntExtra(TOTAL, 0).toString())
         binding.etStatus.setText(intent.getStringExtra(STATUS).toString())
-
         binding.btnAdd.setOnClickListener {
             val status = binding.etStatus.text.toString().trim()
             if (status.isEmpty()) {

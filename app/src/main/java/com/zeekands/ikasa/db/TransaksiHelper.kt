@@ -72,6 +72,14 @@ class TransaksiHelper(context: Context) {
             null,
             null)
     }
+
+    fun queryJoinwithIkan(idIkan : String, id: String, status: String) : Cursor{
+        return database.rawQuery(
+            "SELECT * FROM ${DatabaseContract.TransaksiColumns.TABLE_NAME} JOIN ${DatabaseContract.IkanColumns.TABLE_NAME} ON ${DatabaseContract.TransaksiColumns.ID_IKAN} = ${DatabaseContract.IkanColumns._ID} WHERE ${DatabaseContract.IkanColumns._ID} = $idIkan AND ${DatabaseContract.TransaksiColumns.ID_USER} = $id AND ${DatabaseContract.TransaksiColumns.STATUS} = $status",
+            null
+        )
+    }
+
     fun insert(values: ContentValues?): Long {
         return database.insert(DATABASE_TABLE, null, values)
     }

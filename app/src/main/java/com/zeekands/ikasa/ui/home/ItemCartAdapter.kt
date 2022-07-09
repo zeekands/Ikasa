@@ -9,9 +9,12 @@ import com.zeekands.ikasa.R
 import com.zeekands.ikasa.data.Cart
 import com.zeekands.ikasa.databinding.ItemCheckoutBinding
 import com.zeekands.ikasa.db.CartHelper
+import com.zeekands.ikasa.db.IkanHelper
+import com.zeekands.ikasa.utils.Utils
 
 class ItemCartAdapter: RecyclerView.Adapter<ItemCartAdapter.ItemCartViewHolder>() {
     private lateinit var cartHelper: CartHelper
+    private lateinit var ikanHelper: IkanHelper
     var ListCart = ArrayList<Cart>()
         set(ListCart) {
             if (ListCart.size > 0) {
@@ -43,7 +46,14 @@ class ItemCartAdapter: RecyclerView.Adapter<ItemCartAdapter.ItemCartViewHolder>(
         fun bind(cart: Cart) {
             cartHelper = CartHelper.getInstance(itemView.context)
             cartHelper.open()
-            binding.tvHarga.text = "Rp.${cart.total} (${cart.jumlah} Kg)"
+            ikanHelper = IkanHelper.getInstance(itemView.context)
+            ikanHelper.open()
+            val cursor = ikanHelper.queryById(cart.id_ikan.toString())
+            MappingHelper.mapIkanCursorToIkan(cursor)?.also {
+                binding.tvTitle.text = it.nama
+                binding.ivItem.setImageBitmap(Utils.getImage(it.gambar))
+                binding.tvHarga.text = "Rp.${cart.total} (${cart.jumlah} Kg)"
+            }
             binding.btnDelete.setOnClickListener {
                 val result = cartHelper.deleteById(cart.id.toString())
                 if (result > 0) {

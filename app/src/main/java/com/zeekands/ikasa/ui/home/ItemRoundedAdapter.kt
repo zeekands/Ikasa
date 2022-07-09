@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.zeekands.ikasa.R
 import com.zeekands.ikasa.data.Ikan
 import com.zeekands.ikasa.databinding.ItemRoundedBinding
+import com.zeekands.ikasa.utils.Utils
 
 class ItemRoundedAdapter: RecyclerView.Adapter<ItemRoundedAdapter.ItemRoundedViewHolder>() {
     var listIkan = ArrayList<Ikan>()
@@ -33,7 +34,7 @@ class ItemRoundedAdapter: RecyclerView.Adapter<ItemRoundedAdapter.ItemRoundedVie
         private val binding = ItemRoundedBinding.bind(itemView)
         fun bind(ikan: Ikan) {
             binding.textView.text = ikan.nama
-            binding.imageView.setBackgroundColor(itemView.context.getColor(R.color.main_blue_dark))
+            binding.imageView.setImageBitmap(Utils.getImage(ikan.gambar))
         }
     }
 

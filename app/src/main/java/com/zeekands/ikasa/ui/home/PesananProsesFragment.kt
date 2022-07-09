@@ -23,7 +23,7 @@ class PesananProsesFragment: Fragment() {
     private lateinit var itemPesananAdapter: ItemPesananAdapter
 
     companion object {
-        var ID_USER = "idUser"
+        var ID_USER = "2"
     }
 
     override fun onCreateView(

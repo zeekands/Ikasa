@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.zeekands.ikasa.databinding.ActivityMainBinding
 import com.zeekands.ikasa.db.DatabaseContract
 import com.zeekands.ikasa.db.IkanHelper
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         supportActionBar?.hide();
+
         setContentView(binding.root)
 
         userHelper = UserHelper.getInstance(this)
@@ -37,7 +39,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.txtRegister.setOnClickListener {
             startActivity(Intent(this, Register::class.java))
         }
-        cekLogin()
 
         binding.btnLogin.setOnClickListener(this)
     }
@@ -111,6 +112,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                         Intent.FLAG_ACTIVITY_NEW_TASK or
                                 Intent.FLAG_ACTIVITY_CLEAR_TASK
                     )
+                    PesananSelesaiFragment.ID_USER = it[0].id_user.toString()
+                    PesananSemuaFragment.ID_USER = it[0].id_user.toString()
+                    PesananProsesFragment.ID_USER = it[0].id_user.toString()
                     startActivity(intent)
                 }else{
                     intent = Intent(this, FormIkanActivity::class.java)

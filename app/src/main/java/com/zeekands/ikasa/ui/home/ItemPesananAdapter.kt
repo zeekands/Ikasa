@@ -16,6 +16,7 @@ import com.zeekands.ikasa.databinding.ItemRoundedBinding
 import com.zeekands.ikasa.db.IkanHelper
 import com.zeekands.ikasa.db.UserHelper
 import com.zeekands.ikasa.ui.EditPesananActivity
+import com.zeekands.ikasa.utils.Utils
 
 class ItemPesananAdapter: RecyclerView.Adapter<ItemPesananAdapter.ItemPesananViewHolder>() {
     private lateinit var ikanHelper: IkanHelper
@@ -48,20 +49,23 @@ class ItemPesananAdapter: RecyclerView.Adapter<ItemPesananAdapter.ItemPesananVie
             val cursor = ikanHelper.queryById(transaksi.idIkan.toString())
             MappingHelper.mapIkanCursorToIkan(cursor)?.also {
                 binding.tvTitle.text = it.nama
-            }
-            binding.tvHarga.text = "Rp.${transaksi.total} (${transaksi.berat} Kg)"
-            binding.tvStatus.text = transaksi.status
+                binding.ivItem.setImageBitmap(Utils.getImage(it.gambar))
+                binding.tvHarga.text = "Rp.${transaksi.total} (${transaksi.berat} Kg)"
+                binding.tvStatus.text = transaksi.status
 
-            itemView.setOnClickListener {
-                val intent = Intent(itemView.context, EditPesananActivity::class.java)
-                intent.putExtra(EditPesananActivity.ID, transaksi.id)
-                intent.putExtra(EditPesananActivity.ID_IKAN, transaksi.idIkan)
-                intent.putExtra(EditPesananActivity.ID_USER, transaksi.idUser)
-                intent.putExtra(EditPesananActivity.BERAT, transaksi.berat)
-                intent.putExtra(EditPesananActivity.TOTAL, transaksi.total)
-                intent.putExtra(EditPesananActivity.STATUS, transaksi.status)
-                itemView.context.startActivity(intent)
+                itemView.setOnClickListener { view ->
+                    val intent = Intent(itemView.context, EditPesananActivity::class.java)
+                    intent.putExtra(EditPesananActivity.ID, transaksi.id)
+                    intent.putExtra(EditPesananActivity.ID_IKAN, transaksi.idIkan)
+                    intent.putExtra(EditPesananActivity.ID_USER, transaksi.idUser)
+                    intent.putExtra(EditPesananActivity.BERAT, transaksi.berat)
+                    intent.putExtra(EditPesananActivity.TOTAL, transaksi.total)
+                    intent.putExtra(EditPesananActivity.STATUS, transaksi.status)
+                    intent.putExtra(EditPesananActivity.GAMBAR, it.gambar)
+                    itemView.context.startActivity(intent)
+                }
             }
+
         }
     }
 

@@ -7,17 +7,19 @@
         <entry key="..\:/Users/azizkandias/AndroidStudioProjects/Ikasa/app/src/main/res/drawable/nav_menu.xml" value="0.298" />
         <entry key="..\:/Users/azizkandias/AndroidStudioProjects/Ikasa/app/src/main/res/drawable/rounded_corner.xml" value="0.298" />
         <entry key="..\:/Users/azizkandias/AndroidStudioProjects/Ikasa/app/src/main/res/layout/activity_edit_ikan.xml" value="0.2073087431693989" />
-        <entry key="..\:/Users/azizkandias/AndroidStudioProjects/Ikasa/app/src/main/res/layout/activity_form_ikan.xml" value="0.1671195652173913" />
+        <entry key="..\:/Users/azizkandias/AndroidStudioProjects/Ikasa/app/src/main/res/layout/activity_edit_pesanan.xml" value="0.11506140917905623" />
+        <entry key="..\:/Users/azizkandias/AndroidStudioProjects/Ikasa/app/src/main/res/layout/activity_form_ikan.xml" value="0.22" />
         <entry key="..\:/Users/azizkandias/AndroidStudioProjects/Ikasa/app/src/main/res/layout/activity_form_pesan.xml" value="0.14876723777684914" />
         <entry key="..\:/Users/azizkandias/AndroidStudioProjects/Ikasa/app/src/main/res/layout/activity_home.xml" value="0.14" />
         <entry key="..\:/Users/azizkandias/AndroidStudioProjects/Ikasa/app/src/main/res/layout/activity_main.xml" value="0.18" />
         <entry key="..\:/Users/azizkandias/AndroidStudioProjects/Ikasa/app/src/main/res/layout/activity_register.xml" value="0.25" />
         <entry key="..\:/Users/azizkandias/AndroidStudioProjects/Ikasa/app/src/main/res/layout/activity_update_ikan.xml" value="0.1671195652173913" />
         <entry key="..\:/Users/azizkandias/AndroidStudioProjects/Ikasa/app/src/main/res/layout/fragment_cart.xml" value="0.20719738276990185" />
+        <entry key="..\:/Users/azizkandias/AndroidStudioProjects/Ikasa/app/src/main/res/layout/fragment_filter_pesanan.xml" value="0.1909153005464481" />
         <entry key="..\:/Users/azizkandias/AndroidStudioProjects/Ikasa/app/src/main/res/layout/fragment_home.xml" value="0.19" />
         <entry key="..\:/Users/azizkandias/AndroidStudioProjects/Ikasa/app/src/main/res/layout/fragment_pesanan.xml" value="0.22" />
         <entry key="..\:/Users/azizkandias/AndroidStudioProjects/Ikasa/app/src/main/res/layout/fragment_profile.xml" value="0.11506140917905623" />
-        <entry key="..\:/Users/azizkandias/AndroidStudioProjects/Ikasa/app/src/main/res/layout/item_card.xml" value="0.312280701754386" />
+        <entry key="..\:/Users/azizkandias/AndroidStudioProjects/Ikasa/app/src/main/res/layout/item_card.xml" value="0.12" />
         <entry key="..\:/Users/azizkandias/AndroidStudioProjects/Ikasa/app/src/main/res/layout/item_cart.xml" value="0.22" />
         <entry key="..\:/Users/azizkandias/AndroidStudioProjects/Ikasa/app/src/main/res/layout/item_checkout.xml" value="0.22" />
         <entry key="..\:/Users/azizkandias/AndroidStudioProjects/Ikasa/app/src/main/res/layout/item_pesanan.xml" value="0.1671195652173913" />

@@ -100,7 +100,7 @@ class CartFragment : Fragment() {
                         values.put(DatabaseContract.TransaksiColumns.ID_IKAN, transaksi.id_ikan)
                         values.put(DatabaseContract.TransaksiColumns.BERAT, transaksi.jumlah)
                         values.put(DatabaseContract.TransaksiColumns.TOTAL, transaksi.total)
-                        values.put(DatabaseContract.TransaksiColumns.STATUS, "Proses")
+                        values.put(DatabaseContract.TransaksiColumns.STATUS, "PROSES")
                         val id = transaksiHelper.insert(
                             values
                         )

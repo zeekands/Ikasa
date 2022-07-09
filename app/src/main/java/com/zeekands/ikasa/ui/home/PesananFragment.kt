@@ -31,7 +31,6 @@ class PesananFragment : Fragment() {
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
         super.onViewStateRestored(savedInstanceState)
 //        loadNotesAsync()
-        Log.d("onViewStateRestored", "onViewStateRestored")
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
