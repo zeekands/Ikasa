@@ -109,12 +109,12 @@ class CartFragment : Fragment() {
                     idTransaksi.await()
                 }
                 Toast.makeText(requireContext(), "Checkout berhasil", Toast.LENGTH_SHORT).show()
+                cartHelper.delete(idLogin.await().toString())
+                itemCartAdapter.removeAll()
+                cartHelper.close()
+                loginHelper.close()
+                transaksiHelper.close()
             }
-            cartHelper.delete(idLogin.await().toString())
-            itemCartAdapter.removeAll()
-            cartHelper.close()
-            loginHelper.close()
-            transaksiHelper.close()
         }
     }
 }

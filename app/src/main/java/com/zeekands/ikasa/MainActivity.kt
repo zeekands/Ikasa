@@ -28,9 +28,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         supportActionBar?.hide();
-
         setContentView(binding.root)
-
         userHelper = UserHelper.getInstance(this)
         loginHelper = LoginHelper.getInstance(this)
         userHelper.open()
