@@ -1,4 +1,4 @@
-package com.zeekands.ikasa.ui.home
+package com.zeekands.ikasa.ui.home.pesanan
 
 import android.os.Bundle
 import android.util.Log
@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.viewpager.widget.ViewPager
 import com.zeekands.ikasa.databinding.FragmentPesananBinding
 
 class PesananFragment : Fragment() {

@@ -1,15 +1,17 @@
-package com.zeekands.ikasa
+package com.zeekands.ikasa.utils
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.zeekands.ikasa.ui.login.MainActivity
+import com.zeekands.ikasa.R
 import com.zeekands.ikasa.db.LoginHelper
-import com.zeekands.ikasa.ui.FormIkanActivity
-import com.zeekands.ikasa.ui.home.HomeActivity
-import com.zeekands.ikasa.ui.home.PesananProsesFragment
-import com.zeekands.ikasa.ui.home.PesananSelesaiFragment
-import com.zeekands.ikasa.ui.home.PesananSemuaFragment
+import com.zeekands.ikasa.ui.admin.FormIkanActivity
+import com.zeekands.ikasa.ui.home.main.HomeActivity
+import com.zeekands.ikasa.ui.home.pesanan.PesananProsesFragment
+import com.zeekands.ikasa.ui.home.pesanan.PesananSelesaiFragment
+import com.zeekands.ikasa.ui.home.pesanan.PesananSemuaFragment
 
 class SplashScreen : AppCompatActivity() {
     private lateinit var loginHelper: LoginHelper

@@ -1,4 +1,4 @@
-package com.zeekands.ikasa.ui.home
+package com.zeekands.ikasa.ui.home.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

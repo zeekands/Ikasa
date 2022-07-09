@@ -1,4 +1,4 @@
-package com.zeekands.ikasa
+package com.zeekands.ikasa.ui.login
 
 import android.content.ContentValues
 import android.content.Intent
@@ -6,18 +6,17 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.zeekands.ikasa.databinding.ActivityMainBinding
 import com.zeekands.ikasa.db.DatabaseContract
-import com.zeekands.ikasa.db.IkanHelper
 import com.zeekands.ikasa.db.LoginHelper
 import com.zeekands.ikasa.db.UserHelper
-import com.zeekands.ikasa.ui.FormIkanActivity
-import com.zeekands.ikasa.ui.home.HomeActivity
-import com.zeekands.ikasa.ui.home.PesananProsesFragment
-import com.zeekands.ikasa.ui.home.PesananSelesaiFragment
-import com.zeekands.ikasa.ui.home.PesananSemuaFragment
+import com.zeekands.ikasa.ui.admin.FormIkanActivity
+import com.zeekands.ikasa.ui.home.main.HomeActivity
+import com.zeekands.ikasa.ui.home.pesanan.PesananProsesFragment
+import com.zeekands.ikasa.ui.home.pesanan.PesananSelesaiFragment
+import com.zeekands.ikasa.ui.home.pesanan.PesananSemuaFragment
 import com.zeekands.ikasa.ui.register.Register
+import com.zeekands.ikasa.utils.MappingHelper
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityMainBinding

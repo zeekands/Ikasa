@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.zeekands.ikasa.MainActivity
+import com.zeekands.ikasa.ui.login.MainActivity
 import com.zeekands.ikasa.R
 import com.zeekands.ikasa.data.User
 import com.zeekands.ikasa.databinding.ActivityRegisterBinding

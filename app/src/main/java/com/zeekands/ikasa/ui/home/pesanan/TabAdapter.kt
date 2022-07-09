@@ -1,4 +1,4 @@
-package com.zeekands.ikasa.ui.home
+package com.zeekands.ikasa.ui.home.pesanan
 
 import android.content.Context
 import androidx.annotation.StringRes

@@ -1,4 +1,4 @@
-package com.zeekands.ikasa.ui.home
+package com.zeekands.ikasa.ui.home.main
 
 import android.view.LayoutInflater
 import android.view.View

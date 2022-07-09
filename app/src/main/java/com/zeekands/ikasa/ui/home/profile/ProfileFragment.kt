@@ -1,4 +1,4 @@
-package com.zeekands.ikasa.ui.home
+package com.zeekands.ikasa.ui.home.profile
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.zeekands.ikasa.MainActivity
+import com.zeekands.ikasa.ui.login.MainActivity
 import com.zeekands.ikasa.databinding.FragmentProfileBinding
 import com.zeekands.ikasa.db.LoginHelper
 

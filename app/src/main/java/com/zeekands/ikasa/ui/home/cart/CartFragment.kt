@@ -1,4 +1,4 @@
-package com.zeekands.ikasa.ui.home
+package com.zeekands.ikasa.ui.home.cart
 
 import android.content.ContentValues
 import android.os.Bundle
@@ -9,8 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.zeekands.ikasa.MappingHelper
-import com.zeekands.ikasa.R
+import com.zeekands.ikasa.utils.MappingHelper
 import com.zeekands.ikasa.databinding.FragmentCartBinding
 import com.zeekands.ikasa.db.CartHelper
 import com.zeekands.ikasa.db.DatabaseContract

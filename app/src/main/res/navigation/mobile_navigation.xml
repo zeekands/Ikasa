@@ -6,25 +6,25 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.zeekands.ikasa.ui.home.HomeFragment"
+        android:name="com.zeekands.ikasa.ui.home.main.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_pesanan"
-        android:name="com.zeekands.ikasa.ui.home.PesananFragment"
+        android:name="com.zeekands.ikasa.ui.home.pesanan.PesananFragment"
         android:label="@string/title_pesanan"
         tools:layout="@layout/fragment_pesanan" />
 
     <fragment
         android:id="@+id/navigation_cart"
-        android:name="com.zeekands.ikasa.ui.home.CartFragment"
+        android:name="com.zeekands.ikasa.ui.home.cart.CartFragment"
         android:label="@string/title_cart"
         tools:layout="@layout/fragment_cart" />
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.zeekands.ikasa.ui.home.ProfileFragment"
+        android:name="com.zeekands.ikasa.ui.home.profile.ProfileFragment"
         android:label="@string/profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>

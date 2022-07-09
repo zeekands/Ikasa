@@ -12,7 +12,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingHorizontal="30dp"
-    tools:context=".ui.FormIkanActivity">
+    tools:context=".ui.admin.FormIkanActivity">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/material_et_title"

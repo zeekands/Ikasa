@@ -19,31 +19,31 @@
         android:theme="@style/Theme.Ikasa"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.login.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.EditPesananActivity"
+            android:name=".ui.admin.EditPesananActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.EditIkanActivity"
+            android:name=".ui.admin.EditIkanActivity"
             android:exported="false" />
         <activity
             android:name=".ui.FormPesan.FormPesanActivity"
             android:exported="false" />
         <activity
-            android:name=".UpdateIkanActivity"
+            android:name=".ui.admin.UpdateIkanActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.FormIkanActivity"
+            android:name=".ui.admin.FormIkanActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.home.HomeActivity"
+            android:name=".ui.home.main.HomeActivity"
             android:exported="false" />
         <activity
             android:name=".ui.register.Register"
             android:exported="false" />
         <activity
-            android:name=".SplashScreen"
+            android:name=".utils.SplashScreen"
             android:exported="true"
             android:theme="@style/Theme.Ikasa.splashscreen">
             <intent-filter>

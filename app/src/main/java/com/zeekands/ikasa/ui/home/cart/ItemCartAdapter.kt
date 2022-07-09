@@ -1,10 +1,10 @@
-package com.zeekands.ikasa.ui.home
+package com.zeekands.ikasa.ui.home.cart
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.zeekands.ikasa.MappingHelper
+import com.zeekands.ikasa.utils.MappingHelper
 import com.zeekands.ikasa.R
 import com.zeekands.ikasa.data.Cart
 import com.zeekands.ikasa.databinding.ItemCheckoutBinding

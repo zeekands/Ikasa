@@ -1,7 +1,8 @@
-package com.zeekands.ikasa
+package com.zeekands.ikasa.ui.admin
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.zeekands.ikasa.R
 
 class UpdateIkanActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

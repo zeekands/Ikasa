@@ -1,17 +1,14 @@
-package com.zeekands.ikasa.ui.home
+package com.zeekands.ikasa.ui.home.cart
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.zeekands.ikasa.MappingHelper
+import com.zeekands.ikasa.utils.MappingHelper
 import com.zeekands.ikasa.R
-import com.zeekands.ikasa.data.Ikan
 import com.zeekands.ikasa.data.Transaksi
 import com.zeekands.ikasa.databinding.ItemCheckoutBinding
-import com.zeekands.ikasa.databinding.ItemRoundedBinding
 import com.zeekands.ikasa.db.IkanHelper
-import com.zeekands.ikasa.db.UserHelper
 
 class ItemCheckoutAdapter: RecyclerView.Adapter<ItemCheckoutAdapter.ItemCheckoutViewHolder>() {
     private lateinit var ikanHelper: IkanHelper

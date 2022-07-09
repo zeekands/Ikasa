@@ -1,4 +1,4 @@
-package com.zeekands.ikasa.ui.home
+package com.zeekands.ikasa.ui.home.main
 
 import android.os.Bundle
 import android.util.Log
@@ -7,11 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.zeekands.ikasa.MappingHelper
+import com.zeekands.ikasa.utils.MappingHelper
 import com.zeekands.ikasa.databinding.FragmentHomeBinding
 import com.zeekands.ikasa.db.IkanHelper
 import com.zeekands.ikasa.db.UserHelper
@@ -24,7 +23,6 @@ class HomeFragment : Fragment() {
     private lateinit var itemAdapter: ItemIkanPopulerAdapter
     private lateinit var itemRoundedAdapter: ItemRoundedAdapter
     private lateinit var userHelper: UserHelper
-    private val homeViewModel : HomeViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

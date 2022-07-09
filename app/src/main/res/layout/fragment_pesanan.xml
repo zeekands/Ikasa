@@ -6,7 +6,7 @@
     android:paddingHorizontal="10dp"
     android:paddingVertical="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.home.PesananFragment"
+    tools:context=".ui.home.pesanan.PesananFragment"
     android:orientation="vertical">
 
     <com.ogaclejapan.smarttablayout.SmartTabLayout

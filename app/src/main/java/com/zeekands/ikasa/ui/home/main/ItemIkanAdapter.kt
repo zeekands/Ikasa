@@ -1,14 +1,6 @@
-package com.zeekands.ikasa.ui.home
+package com.zeekands.ikasa.ui.home.main
 
-import android.content.ContentUris
-import android.content.Context
 import android.content.Intent
-import android.database.Cursor
-import android.graphics.BitmapFactory
-import android.net.Uri
-import android.os.Environment
-import android.provider.DocumentsContract
-import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,9 +9,8 @@ import com.zeekands.ikasa.R
 import com.zeekands.ikasa.data.Ikan
 import com.zeekands.ikasa.databinding.ItemCartBinding
 import com.zeekands.ikasa.db.IkanHelper
-import com.zeekands.ikasa.ui.EditIkanActivity
+import com.zeekands.ikasa.ui.admin.EditIkanActivity
 import com.zeekands.ikasa.utils.Utils
-import java.io.File
 
 
 class ItemIkanAdapter : RecyclerView.Adapter<ItemIkanAdapter.ItemCartViewHolder>() {

@@ -1,4 +1,4 @@
-package com.zeekands.ikasa
+package com.zeekands.ikasa.utils
 
 import android.database.Cursor
 import com.zeekands.ikasa.data.*

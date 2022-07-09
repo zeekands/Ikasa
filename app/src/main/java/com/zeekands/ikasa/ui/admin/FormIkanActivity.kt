@@ -1,34 +1,28 @@
-package com.zeekands.ikasa.ui
+package com.zeekands.ikasa.ui.admin
 
 import android.app.Activity
 import android.content.*
-import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
-import android.net.Uri
 import android.os.Bundle
-import android.os.Environment
-import android.provider.DocumentsContract
-import android.provider.MediaStore
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.zeekands.ikasa.MainActivity
-import com.zeekands.ikasa.MappingHelper
+import com.zeekands.ikasa.ui.login.MainActivity
+import com.zeekands.ikasa.utils.MappingHelper
 import com.zeekands.ikasa.R
 import com.zeekands.ikasa.data.Ikan
 import com.zeekands.ikasa.databinding.ActivityFormIkanBinding
 import com.zeekands.ikasa.db.*
-import com.zeekands.ikasa.ui.home.ItemIkanAdapter
-import com.zeekands.ikasa.ui.home.ItemPesananAdapter
+import com.zeekands.ikasa.ui.home.main.ItemIkanAdapter
+import com.zeekands.ikasa.ui.home.pesanan.ItemPesananAdapter
 import com.zeekands.ikasa.ui.register.Register
 import com.zeekands.ikasa.utils.Utils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import java.io.File
 
 
 class FormIkanActivity : AppCompatActivity(), View.OnClickListener {

@@ -1,4 +1,4 @@
-package com.zeekands.ikasa.ui
+package com.zeekands.ikasa.ui.admin
 
 import android.content.ContentValues
 import android.content.Intent
@@ -6,9 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import com.zeekands.ikasa.MappingHelper
-import com.zeekands.ikasa.R
-import com.zeekands.ikasa.databinding.ActivityEditIkanBinding
+import com.zeekands.ikasa.utils.MappingHelper
 import com.zeekands.ikasa.databinding.ActivityEditPesananBinding
 import com.zeekands.ikasa.db.DatabaseContract
 import com.zeekands.ikasa.db.IkanHelper

@@ -1,4 +1,4 @@
-package com.zeekands.ikasa.ui
+package com.zeekands.ikasa.ui.admin
 
 import android.app.Activity
 import android.content.ContentValues
@@ -8,16 +8,12 @@ import android.graphics.drawable.BitmapDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
-import com.zeekands.ikasa.MappingHelper
-import com.zeekands.ikasa.R
+import com.zeekands.ikasa.utils.MappingHelper
 import com.zeekands.ikasa.databinding.ActivityEditIkanBinding
-import com.zeekands.ikasa.databinding.ActivityFormIkanBinding
 import com.zeekands.ikasa.db.DatabaseContract
 import com.zeekands.ikasa.db.IkanHelper
-import com.zeekands.ikasa.ui.register.Register
 import com.zeekands.ikasa.utils.Utils
 import kotlinx.coroutines.launch
 

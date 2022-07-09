@@ -1,25 +1,17 @@
 package com.zeekands.ikasa.ui.FormPesan
 
 import android.content.ContentValues
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
-import com.zeekands.ikasa.MainActivity
-import com.zeekands.ikasa.MappingHelper
-import com.zeekands.ikasa.R
+import com.zeekands.ikasa.utils.MappingHelper
 import com.zeekands.ikasa.data.Ikan
-import com.zeekands.ikasa.data.User
 import com.zeekands.ikasa.databinding.ActivityFormPesanBinding
 import com.zeekands.ikasa.db.CartHelper
 import com.zeekands.ikasa.db.DatabaseContract
 import com.zeekands.ikasa.db.LoginHelper
-import com.zeekands.ikasa.db.TransaksiHelper
-import com.zeekands.ikasa.ui.home.HomeActivity
-import com.zeekands.ikasa.ui.register.Register
+import com.zeekands.ikasa.utils.Utils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
@@ -36,7 +28,7 @@ class FormPesanActivity : AppCompatActivity() {
         binding.tvTitle.text = data?.nama
         binding.tvHarga.text = data?.harga.toString()
         binding.tvDesc.text = data?.deskripsi
-
+        binding.imageView2.setImageBitmap(data?.gambar?.let { Utils.getImage(it) })
         binding.etJumlah.apply {
             setText("1")
             isEnabled = false
